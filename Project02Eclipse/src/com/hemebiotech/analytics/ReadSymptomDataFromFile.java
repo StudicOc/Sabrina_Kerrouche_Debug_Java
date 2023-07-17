@@ -24,13 +24,15 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	
 	@Override
 	public List<String> GetSymptoms() {
+
+		//	Flux en lecture
 		ArrayList<String> result = new ArrayList<String>();
 		
 		if (filepath != null) {
 			try {
 				BufferedReader reader = new BufferedReader (new FileReader(filepath));
 				String line = reader.readLine();
-				
+
 				while (line != null) {
 					result.add(line);
 					line = reader.readLine();
@@ -45,3 +47,9 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 
 }
+
+/* hasNextLine = Vérifie si le fichier à une ligne suivante
+* nextLine();
+* FileNotFoundException = vérifie la lecture du fichier avec une exception
+* IOException
+* */
