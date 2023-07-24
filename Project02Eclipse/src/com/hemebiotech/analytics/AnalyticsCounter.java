@@ -1,62 +1,69 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.List;
+
+import java.util.*;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;
-	private static int rashCount = 0;
-	private static int pupilCount = 0;
-	
-	public static void main(String args[]) throws Exception {
 
-        // 1- Get symptom
 
+	public static void main(String[] args) throws Exception {
+
+
+		//1-Get symptom
 		ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile("Project02Eclipse/symptoms.txt");
+		List<String> symptoms = reader.GetSymptoms();
 
-		List<String> symptom = reader.GetSymptoms(); // Lecture du file
+		//countSymptoms (symptoms); Call method
+		//Retrieve result of GetSymptoms
+		TreeMap<String, Integer> counter = countSymptoms(symptoms);
 
-		// Suivre les étapes
-
-		// 2- Count symptom
-		// 3- Sort symptom
-		// 4 - Write symptom
-
-		/*
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("Project02Eclipse/symptoms.txt"));
-		String line = reader.readLine();
-
-		int i = 0;	// set i to 0
-		int headCount = 0;	// counts headaches
-		while (line != null) {
-			i++;	// increment i
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
-
-			line = reader.readLine();	// get another symptom
+		//Boucle and check result with console
+		for (Map.Entry<String, Integer> symptom : counter.entrySet()) {
+			System.out.println(symptom.getKey() + " : " + symptom.getValue() + "\n");
 		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
-		*/
 
 	}
 
+	//1-Get symptom
+
+	public static TreeMap<String, Integer> countSymptoms(List<String> symptoms) {
+
+
+
+		TreeMap<String, Integer> countFrequencySymptom = new TreeMap<>();
+
+		// Checking all elements of our loop
+
+		for (String freq : symptoms)
+		{
+			if(countFrequencySymptom.containsKey(freq))
+			{
+				//Check is present in elementCountMap, incrementing it's count by 1
+
+				countFrequencySymptom.put(freq, countFrequencySymptom.get(freq)+1);
+			}
+			else
+			{
+				//If element is not present in elementCountMap,
+				//adding this element to elementCountMap with 1 as it's value
+				countFrequencySymptom.put(freq, 1);
+				//System.out.println("Element Count : "+countFrequencySymptom);
+			}
+		}
+
+		return countFrequencySymptom;
+	}
+
+	// 3- Sort symptom
+	// 4 - Write symptom
+
+
+
 
 }
+
+
+
+
+
+
