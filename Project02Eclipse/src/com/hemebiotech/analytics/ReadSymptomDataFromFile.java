@@ -48,8 +48,3 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
 }
 
-/* hasNextLine = Vérifie si le fichier à une ligne suivante
-* nextLine();
-* FileNotFoundException = vérifie la lecture du fichier avec une exception
-* IOException
-* */
