@@ -18,11 +18,17 @@ public class WriteSymptomDataToFile implements ISymptomWriter{
 
         try {
 
-            FileWriter fileWriter = new FileWriter("/result.out");
+            FileWriter fileWriter = new FileWriter("./result.out");
             BufferedWriter writer = new BufferedWriter(fileWriter);
 
+            // Keyset : récupérer un set(unique( récupérer les clés de ma map) des cles
+            for (String symptom : symptoms.keySet()) {
 
-            // Use method write
+                writer.write(symptom + " : " + symptoms.get(symptom));
+                writer.newLine();
+
+            }
+
 
             writer.close() ;
 
@@ -36,3 +42,11 @@ public class WriteSymptomDataToFile implements ISymptomWriter{
 
     }
 }
+
+// Creates a Writer using FileWriter
+//Writer output = new FileWriter("output.txt");
+// Writes string to the files
+// output.write(data);
+
+// Closes the writer
+//output.close();
