@@ -9,8 +9,6 @@ public class CountSymptomDataFromFile implements ISymptomCount{
 
         TreeMap<String, Integer> countFrequencySymptom = new TreeMap<>();
 
-        // Checking all elements of our loop
-
         for (String freq : symptoms)
         {
             if(countFrequencySymptom.containsKey(freq))
@@ -24,7 +22,5 @@ public class CountSymptomDataFromFile implements ISymptomCount{
         }
         return countFrequencySymptom;
     }
-
-
 }
 

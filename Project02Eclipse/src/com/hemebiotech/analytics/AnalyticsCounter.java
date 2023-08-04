@@ -12,12 +12,12 @@ public class AnalyticsCounter {
 		List<String> symptoms = reader.GetSymptoms();
 
 		// 2- Count symptoms
-
-		TreeMap<String, Integer> counter = countSymptoms(symptoms);
+		CountSymptomDataFromFile counter = new CountSymptomDataFromFile();
+		TreeMap<String, Integer> count = counter.countSymptoms(symptoms);
 
 		// 3 - Write symptoms
         WriteSymptomDataToFile writer = new WriteSymptomDataToFile("./result.out");
-        writer.writeSymptoms(counter);
+        writer.writeSymptoms(count);
 	}
 }
 
